@@ -16,5 +16,8 @@ final case class Tweet(account: Author, timestamp: Long, body: String) {
       .toSet
   }
 }
+val rugbyTag = Hashtag("#RWC2023")
 
-implicit val system:ActorSystem = ActorSystem("rugby-tweets")
+implicit val system:ActorSystem = ActorSystem("RWC")
+
+
