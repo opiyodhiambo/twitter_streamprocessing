@@ -56,6 +56,10 @@ object main extends App {
 
   val done: Future[Done] = tweets
     .filterNot(_.hashtags.contains(rugbyTag))
+    .map(_.hashtags)
+    .reduce(_ ++ _)
+    .mapConcat(identity)
+    .map(_.name.toUpperCase)
     .runWith(Sink.foreach(println))
 
   implicit val ec: ExecutionContextExecutor = system.dispatcher
