@@ -16,3 +16,5 @@ final case class Tweet(account: Author, timestamp: Long, body: String) {
       .toSet
   }
 }
+
+implicit val system:ActorSystem = ActorSystem("rugby-tweets")
