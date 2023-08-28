@@ -63,7 +63,7 @@ object main extends App {
     .runWith(Sink.foreach(println))
 
   implicit val ec: ExecutionContextExecutor = system.dispatcher
-  Thread.sleep(15000)
+  // Thread.sleep(15000)
   done.onComplete(_ => system.terminate())
 
 }
