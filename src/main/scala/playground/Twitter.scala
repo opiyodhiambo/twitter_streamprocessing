@@ -55,7 +55,7 @@ object main extends App {
   implicit val system: ActorSystem = ActorSystem("RWC")
 
   val done: Future[Done] = tweets
-    .filterNot(_.hashtags.contains(rugbyTag))
+    .filter(_.hashtags.contains(rugbyTag))
     .map(_.hashtags)
     .reduce(_ ++ _)
     .mapConcat(identity)
@@ -63,7 +63,7 @@ object main extends App {
     .runWith(Sink.foreach(println))
 
   implicit val ec: ExecutionContextExecutor = system.dispatcher
-  Thread.sleep(2000)
+  Thread.sleep(15000)
   done.onComplete(_ => system.terminate())
 
 }
